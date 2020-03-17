@@ -2,7 +2,7 @@ package com.grupo5.mymovies
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.grupo5.mymovies.model.ResultsItem
+import com.grupo5.mymovies.model.Movie
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_movie_detail.*
 
@@ -17,7 +17,7 @@ class MovieDetailActivity : AppCompatActivity() {
         setContentView(R.layout.activity_movie_detail)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        val movieExample = ResultsItem(
+        val movieExample = Movie(
             popularity = 98.167,
             voteCount = 21173,
             video = false,
@@ -36,7 +36,7 @@ class MovieDetailActivity : AppCompatActivity() {
         setViews(movieExample)
     }
 
-    private fun setViews(movieExample: ResultsItem) {
+    private fun setViews(movieExample: Movie) {
         Picasso.get().load(URL_IMAGE_BASE + movieExample.posterPath).into(iv_movie_image)
         tv_movie_name.text = movieExample.title
         tv_overview.text = movieExample.overview
