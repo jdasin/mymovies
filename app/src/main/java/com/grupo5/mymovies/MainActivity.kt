@@ -17,6 +17,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import kotlin.coroutines.CoroutineContext
 import com.grupo5.mymovies.model.Movie
+import kotlinx.android.synthetic.main.activity_main.*
 
 
 class MainActivity : AppCompatActivity(), CoroutineScope {
@@ -29,17 +30,16 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val recyclerView = findViewById<View>(R.id.moviesRecycleView) as RecyclerView
-        val progress = findViewById<View>(R.id.progress) as ProgressBar
-        recyclerView.setHasFixedSize(true)
-        recyclerView.layoutManager = LinearLayoutManager(this)
-        recyclerView.itemAnimator = DefaultItemAnimator()
+
+        moviesRecycleView.setHasFixedSize(true)
+        moviesRecycleView.layoutManager = LinearLayoutManager(this)
+        moviesRecycleView.itemAnimator = DefaultItemAnimator()
         mAdapter = MovieAdapter(ArrayList<Movie>())
-        recyclerView.adapter = mAdapter
+        moviesRecycleView.adapter = mAdapter
 
         job = Job()
         progress.visibility = View.VISIBLE
-        recyclerView.visibility = View.GONE
+        moviesRecycleView.visibility = View.GONE
 
         launch(Dispatchers.IO) {
             val moviesResponse = createMoviesService().getMoviesAsync(getString(R.string.api_key))
@@ -48,7 +48,7 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
                 mAdapter.movies = moviesResponse.results
                 mAdapter.notifyDataSetChanged()
                 progress.visibility = View.GONE
-                recyclerView.visibility = View.VISIBLE
+                moviesRecycleView.visibility = View.VISIBLE
             }
         }
     }
