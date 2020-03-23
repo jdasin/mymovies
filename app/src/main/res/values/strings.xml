@@ -1,11 +1,12 @@
 <resources>
     <string name="app_name">My Application</string>
     <string name="api_key">a63a4bd70daddb27d21f7dd323c9da39</string>
+    <string name="detail_activity">Detalle de la Película</string>
+    <string name="movie_name">Nombre de la Película</string>
     <string name="movie_title">title</string>
     <string name="vote_average">vote average</string>
     <string name="overview">Descripción de la película</string>
     <string name="release_date_lb">Fecha de lanzamiento:</string>
-    <string name="vote_average">Promedio de votos:</string>
     <string name="release_date_ex">2001-07-20</string>
     <string name="vote_average_ex">8.5</string>
 </resources>
