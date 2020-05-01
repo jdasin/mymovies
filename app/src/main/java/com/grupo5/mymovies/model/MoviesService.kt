@@ -6,6 +6,5 @@ import retrofit2.http.Query
 interface MoviesService {
 
     @GET("discover/movie?")
-    suspend fun getMoviesAsync(@Query("api_key") apiKey: String): MoviesResponse
-
+    suspend fun getMoviesAsync(@Query("api_key") apiKey: String, @Query("region") region: String): MoviesResponse
 }
